@@ -1,12 +1,22 @@
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware
 
 from database.connection import engine
 from database.models import Base, Product
 from database.db import get_db
 
 app=FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 # Create tables automatically
 Base.metadata.create_all(bind=engine)
