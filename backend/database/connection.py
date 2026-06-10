@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = "postgresql://postgres:test123@localhost:5433/cloudmart"
+DATABASE_URL = "postgresql://postgres:postgres@postgres:5432/cloudmart"
 
 engine = create_engine(DATABASE_URL)
 
